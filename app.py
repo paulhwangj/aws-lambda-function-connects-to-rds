@@ -28,15 +28,15 @@ def handler(event, context):
 
     with conn.cursor() as cur:
         cur.execute("create table Employee ( EmpID  int NOT NULL, Name varchar(255) NOT NULL, PRIMARY KEY (EmpID))")
-        cur.execute('insert into Employee (EmpID, Name) values(1, "Joe")')
-        cur.execute('insert into Employee (EmpID, Name) values(2, "Bob")')
-        cur.execute('insert into Employee (EmpID, Name) values(3, "Mary")')
+        cur.execute('insert into Employee (EmpID, Name) values(4, "Paul")')
+        cur.execute('insert into Employee (EmpID, Name) values(5, "Bentley")')
+        cur.execute('insert into Employee (EmpID, Name) values(6, "Choi")')
         conn.commit()
         cur.execute("select * from Employee")
         for row in cur:
             item_count += 1
             logger.info(row)
-            #print(row)
+            print(row)
     conn.commit()
 
     return "Added %d items from RDS MySQL table" %(item_count)
